@@ -2,6 +2,13 @@ import React from "react";
 // import PropTypes from "prop-types";
 import MainPage from "./components/MainPage";
 
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const client = new ApolloClient({
+  uri: "https://api-useast.graphcms.com/v1/cjrpt1hxh7wq301htldd95b0m/master"
+});
+
 // CLASS COMPONENT
 
 // class App extends Component {
@@ -26,9 +33,11 @@ import MainPage from "./components/MainPage";
 
 const App = props => {
   return (
-    <div {...props}>
-      <MainPage />
-    </div>
+    <ApolloProvider client={client}>
+      <div {...props}>
+        <MainPage />
+      </div>
+    </ApolloProvider>
   );
 };
 
